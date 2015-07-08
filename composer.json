@@ -1,0 +1,21 @@
+{
+    "name": "digbang/assets",
+    "description": "Asset versioning for Laravel projects.",
+    "require": {
+        "illuminate/support": "~4.2",
+        "illuminate/filesystem": "~4.2",
+        "illuminate/config": "~4.2",
+        "illuminate/routing": "~4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Digbang\\Assets\\": "src/"
+        },
+        "files": ["src/helpers.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Digbang\\Assets\\Tests": "tests/"
+        }
+    }
+}
