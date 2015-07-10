@@ -30,11 +30,17 @@ return [
 ];
 ```
 
+Then, to generate the versioned files, run:
+
+```
+php artisan asset:version
+```
+
 ### The `vasset` function
 To use asset versioning, you need to change your templates and replace the use of Laravel's `asset` 
 function with this package `vasset` function.
  
-```
+```html
 <script type="text/javascript" src="{{ vasset('js/site.min.js') }}"></script>
 ```
 
@@ -50,6 +56,6 @@ You may also use the facade to generate the versioned urls. First, add the facad
 
 Then use the `Asset::asset` function:
 
-```
+```html
 <link rel="stylesheet" href="{{ Asset::asset('css/site.min.css') }}" />
 ```
