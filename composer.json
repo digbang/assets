@@ -11,6 +11,9 @@
         "graham-campbell/flysystem":  "~1.0",
         "illuminate/console": "~4.2"
     },
+    "suggest": {
+        "graham-campbell/flysystem":  "Use Flysystem to copy the source asset to a remote location (e.g. AWS s3)"
+    },
     "autoload": {
         "psr-4": {
             "Digbang\\Assets\\": "src/"
