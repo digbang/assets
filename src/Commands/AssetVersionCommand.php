@@ -73,9 +73,9 @@ final class AssetVersionCommand extends Command
 			/** @type FlysystemManager $flysystem */
 			$flysystem = $this->laravel->make(FlysystemManager::class);
 
-			/** @type FilesystemInterface $conn */
+			/** @type FilesystemInterface $driver */
 			$driver = $flysystem->connection($flysystemConnection);
-			$driver->copy($file, $versionedFile);
+			$driver->writeStream($versionedFile, fopen(public_path($file), 'r'));
 		}
 		else
 		{
