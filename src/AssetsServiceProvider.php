@@ -16,7 +16,7 @@ class AssetsServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-		$this->package('digbang/assets', 'assets', dirname(__DIR__));
+		$this->package('digbang/assets');
 
 		$this->commands([
 			Commands\AssetVersionCommand::class
