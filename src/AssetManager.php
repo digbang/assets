@@ -47,12 +47,7 @@ final class AssetManager
 			$path = $this->lockFile->getAsset($path)->getVersionedFile();
 		}
 
-		if ($route)
-		{
-			return $route . $path;
-		}
-
-		return $this->urlGenerator->asset($path, $secure);
+		return $this->urlGenerator->asset($route . $path, $secure);
 	}
 
 	private function init()

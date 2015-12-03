@@ -8,8 +8,10 @@
         "illuminate/routing": "~4.2"
     },
     "require-dev": {
+        "phpunit/phpunit": "^4.0",
         "graham-campbell/flysystem":  "~1.0",
-        "illuminate/console": "~4.2"
+        "illuminate/console": "~4.2",
+        "mockery/mockery": "^0.9.4"
     },
     "suggest": {
         "graham-campbell/flysystem":  "Use Flysystem to copy the source asset to a remote location (e.g. AWS s3)"
@@ -22,7 +24,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Digbang\\Assets\\Tests": "tests/"
+            "Digbang\\Assets\\Tests\\": "tests/"
         }
     }
 }

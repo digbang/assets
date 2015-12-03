@@ -42,4 +42,33 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals('http://localhost/fake/a_style.1.css', $path);
 	}
+
+	/** @test */
+	public function it_should_give_me_a_different_url_for_a_managed_asset_with_route()
+	{
+		$folder = realpath(dirname(__FILE__).'/fixtures');
+
+		$config = \Mockery::mock(Repository::class)->shouldIgnoreMissing();
+		$url = \Mockery::mock(UrlGenerator::class)->shouldIgnoreMissing();
+		$filesystem = \Mockery::mock(Filesystem::class)->shouldIgnoreMissing();
+
+		$config
+			->shouldReceive('get')
+			->with('assets::assets', [])
+			->andReturn(
+				array_map(function($path) use ($folder){
+					return $folder . '/' . $path;
+				}, $this->assets)
+		);
+
+		$config->shouldReceive('get')->with('assets::enabled', false)->andReturn(true);
+
+		$url->shouldReceive('asset')->with($folder . '/' . 'a_style.1.css', \Mockery::any())->andReturn('http://localhost/fake/a_style.1.css');
+
+		$assetManager = new AssetManager($config, $url, $filesystem);
+
+		$path = $assetManager->asset($folder . '/' . 'a_style.css', null, 'http://www.digbang.com');
+
+		$this->assertEquals('http://www.digbang.com/fake/a_style.1.css', $path);
+	}
 }
