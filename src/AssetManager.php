@@ -38,13 +38,18 @@ final class AssetManager
 		$this->filesystem = $filesystem;
 	}
 
-	public function asset($path, $secure = null)
+	public function asset($path, $secure = null, $route = null)
 	{
 		$this->init();
 
 		if ($this->enabled && $this->lockFile->isManaged($path))
 		{
 			$path = $this->lockFile->getAsset($path)->getVersionedFile();
+		}
+
+		if ($route)
+		{
+			return $route . $path;
 		}
 
 		return $this->urlGenerator->asset($path, $secure);
